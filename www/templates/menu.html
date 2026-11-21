@@ -1,0 +1,43 @@
+<ion-side-menus enable-menu-with-back-views="false" ng-controller="MenuCtrl">
+
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button></ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" expose-aside-when="large">
+    <ion-header-bar class="bar-dark menu-header">
+      <h1 class="title">Portal do Aluno UCSal</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="menu-aluno" ng-if="alunoLogado">
+        <i class="icon ion-person"></i>
+        <div>
+          <strong>{{ alunoLogado.nome }}</strong>
+          <small>Matrícula {{ alunoLogado.matricula }}</small>
+        </div>
+      </div>
+
+      <ion-list>
+        <ion-item class="item-icon-left" menu-close ui-sref="app.noticias" ui-sref-active="item-ativo">
+          <i class="icon ion-ios-paper"></i> Mural de Notícias
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close ui-sref="app.perfil" ui-sref-active="item-ativo">
+          <i class="icon ion-person"></i> Atualização Cadastral
+        </ion-item>
+        <ion-item class="item-icon-left" menu-close ui-sref="app.financeiro" ui-sref-active="item-ativo">
+          <i class="icon ion-cash"></i> Financeiro
+        </ion-item>
+        <ion-item class="item-icon-left" ng-click="sair()">
+          <i class="icon ion-log-out"></i> Sair
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+
+</ion-side-menus>
