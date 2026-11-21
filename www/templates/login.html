@@ -1,0 +1,34 @@
+<ion-view view-title="Login" class="tela-login" hide-nav-bar="true">
+  <ion-content class="padding">
+
+    <div class="login-logo">
+      <i class="icon ion-university"></i>
+      <h2>Portal do Aluno</h2>
+      <p>Universidade Católica do Salvador</p>
+    </div>
+
+    <form name="formLogin" novalidate>
+      <div class="list card login-card">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Matrícula</span>
+          <input type="text" inputmode="numeric" placeholder="Ex.: 20261001"
+                 ng-model="credenciais.matricula">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Senha</span>
+          <input type="password" placeholder="Sua senha"
+                 ng-model="credenciais.senha">
+        </label>
+      </div>
+
+      <div class="mensagem mensagem-erro" ng-if="mensagemErro">
+        <i class="icon ion-alert-circled"></i> {{ mensagemErro }}
+      </div>
+
+      <button type="submit" class="button button-block button-calm" ng-click="entrar()">
+        Entrar
+      </button>
+    </form>
+
+  </ion-content>
+</ion-view>
