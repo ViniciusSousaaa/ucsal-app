@@ -1,0 +1,65 @@
+<ion-view view-title="Atualização Cadastral">
+  <ion-content class="conteudo-centralizado">
+    <form name="formPerfil" novalidate>
+
+      <div class="item item-divider">Dados institucionais</div>
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Nome completo</span>
+          <input type="text" ng-model="aluno.nome" ng-disabled="camposInstitucionaisBloqueados">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Matrícula</span>
+          <input type="text" ng-model="aluno.matricula" ng-disabled="camposInstitucionaisBloqueados">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Curso</span>
+          <input type="text" ng-model="aluno.curso" ng-disabled="camposInstitucionaisBloqueados">
+        </label>
+      </div>
+
+      <div class="item item-divider">Contato</div>
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">E-mail pessoal</span>
+          <input type="email" placeholder="seu@email.com" ng-model="aluno.email">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Telefone / WhatsApp</span>
+          <input type="tel" placeholder="(71) 90000-0000" ng-model="aluno.telefone">
+        </label>
+      </div>
+
+      <div class="item item-divider">Endereço</div>
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">CEP</span>
+          <input type="text" placeholder="00000-000" ng-model="aluno.endereco.cep">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Rua</span>
+          <input type="text" placeholder="Rua e número" ng-model="aluno.endereco.rua">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Bairro</span>
+          <input type="text" placeholder="Bairro" ng-model="aluno.endereco.bairro">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Cidade</span>
+          <input type="text" placeholder="Cidade" ng-model="aluno.endereco.cidade">
+        </label>
+      </div>
+
+      <div class="mensagem mensagem-erro" ng-if="mensagemErro">
+        <i class="icon ion-alert-circled"></i> {{ mensagemErro }}
+      </div>
+
+      <div class="padding">
+        <button type="submit" class="button button-block button-positive icon-left ion-checkmark" ng-click="salvar()">
+          Salvar Alterações
+        </button>
+      </div>
+
+    </form>
+  </ion-content>
+</ion-view>
