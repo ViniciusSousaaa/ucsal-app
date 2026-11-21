@@ -1,0 +1,26 @@
+<ion-view view-title="{{ noticia.categoria }}">
+  <ion-content class="conteudo-centralizado">
+
+    <div class="list card" ng-if="noticia">
+      <div class="item item-image">
+        <img ng-src="{{ noticia.imagem }}" alt="{{ noticia.titulo }}">
+      </div>
+      <div class="item item-text-wrap">
+        <span class="badge"
+              ng-class="{ 'badge-positive': noticia.categoria === 'Notícia', 'badge-calm': noticia.categoria === 'Evento' }">
+          {{ noticia.categoria }}
+        </span>
+        <p class="data-publicacao">
+          <i class="icon ion-calendar"></i> {{ noticia.data | date:"dd 'de' MMMM 'de' yyyy" }}
+        </p>
+        <h2 class="titulo-detalhe">{{ noticia.titulo }}</h2>
+        <p class="conteudo-detalhe">{{ noticia.conteudo }}</p>
+      </div>
+    </div>
+
+    <div class="mensagem mensagem-erro" ng-if="!noticia">
+      Publicação não encontrada.
+    </div>
+
+  </ion-content>
+</ion-view>
