@@ -1,0 +1,42 @@
+<ion-view view-title="Financeiro">
+  <ion-content class="conteudo-centralizado">
+
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">Semestre letivo</div>
+        <select ng-model="filtro.semestre"
+                ng-options="semestre for semestre in semestres"
+                ng-change="carregarMensalidades()">
+        </select>
+      </label>
+    </div>
+
+    <div class="item item-divider">Mensalidades de {{ filtro.semestre }}</div>
+
+    <div class="list">
+      <div class="item item-text-wrap mensalidade" ng-repeat="mensalidade in mensalidades">
+
+        <span class="badge"
+              ng-class="{ 'badge-balanced': mensalidade.status === STATUS.PAGA,
+                          'badge-energized': mensalidade.status === STATUS.A_PAGAR }">
+          {{ mensalidade.status }}
+        </span>
+
+        <h2>{{ mensalidade.mes }}</h2>
+        <p>Vencimento: {{ mensalidade.vencimento | date:'dd/MM/yyyy' }}</p>
+        <p class="valor-parcela">{{ mensalidade.valor | currency:'R$ ' }}</p>
+
+        <div ng-if="mensalidade.status === STATUS.A_PAGAR" class="codigo-barras">
+          <p class="linha-digitavel">{{ mensalidade.linhaDigitavel }}</p>
+          <button class="button button-small"
+                  ng-class="mensalidade.copiado ? 'button-balanced' : 'button-calm'"
+                  ng-click="copiarCodigoBarras(mensalidade)">
+            <i class="icon" ng-class="mensalidade.copiado ? 'ion-checkmark' : 'ion-ios-copy-outline'"></i>
+            {{ mensalidade.copiado ? 'Copiado!' : 'Copiar Código de Barras' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
